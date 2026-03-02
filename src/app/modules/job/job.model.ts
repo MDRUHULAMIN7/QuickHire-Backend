@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import type { TJob } from "./job.interface.js";
+import { EMPLOYMENT_TYPES } from "./job.constant.js";
 
 const jobSchema = new Schema<TJob>(
   {
@@ -8,6 +9,9 @@ const jobSchema = new Schema<TJob>(
     location: { type: String, required: true },
     category: { type: String, required: true },
     description: { type: String, required: true },
+    employment_type: { type: String, enum: [...EMPLOYMENT_TYPES], default: 'Full Time', required: true },
+    tags: { type: [String], default: [] },
+    company_logo_url: { type: String },
     createdAt: { type: Date, default: Date.now },
   },
   { timestamps: true }

@@ -4,10 +4,10 @@ export const ApplicationValidation = {
   create: z.object({
     body: z.object({
       job: z.string().min(1),
-      name: z.string().min(1),
+      name: z.string().trim().min(1),
       email: z.string().email(),
-      resume_link: z.string().url(),
-      cover_note: z.string().optional(),
+      resumeLink: z.string().url().regex(/^https?:\/\//, 'Please enter a valid URL starting with http/https'),
+      coverNote: z.string().min(50, { message: 'Cover note must be at least 50 characters' }),
     }),
   }),
 };

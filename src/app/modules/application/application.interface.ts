@@ -3,7 +3,8 @@ export type TApplication = {
   job: Types.ObjectId | string;
   name: string;
   email: string;
-  resume_link: string;
-  cover_note?: string;
+  resumeLink: string;
+  coverNote: string;
+  status?: 'pending' | 'reviewed' | 'shortlisted' | 'rejected';
   createdAt?: Date;
 };
