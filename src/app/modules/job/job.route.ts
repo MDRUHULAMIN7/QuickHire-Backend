@@ -8,10 +8,10 @@ import { USER_ROLE } from '../user/user.constant.js';
 const router = express.Router();
 
 router.get('/', JobController.getJoblist);
-router.get('/:id', JobController.getJobById);
 router.get('/_summary/categories', JobController.getCategorySummary);
 router.get('/_featured', JobController.getFeatured);
 router.get('/_latest', JobController.getLatest);
+router.get('/:id', JobController.getJobById);
 router.post(
   '/',
   auth(USER_ROLE.Admin),

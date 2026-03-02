@@ -8,6 +8,7 @@ import globalErrorHandeler from './app/middleware/globalErrorHandeler.js';
 import notFound from './app/middleware/notFound.js';
 import router from './app/routes/index.js';
 import cookieParser from 'cookie-parser';
+import config from './app/config/index.js';
 const app: Application = express();
 
 const allowedOrigins = [
@@ -15,6 +16,10 @@ const allowedOrigins = [
   'http://localhost:3001',
   'http://127.0.0.1:3000',
   'http://127.0.0.1:3001',
+  ...(config.client_url ? [config.client_url] : []),
+  ...(config.cors_origins
+    ? config.cors_origins.split(',').map((origin) => origin.trim())
+    : []),
 ];
 
 const corsOptions: cors.CorsOptions = {
