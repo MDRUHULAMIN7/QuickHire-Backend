@@ -16,6 +16,7 @@ const allowedOrigins = [
   'http://localhost:3001',
   'http://127.0.0.1:3000',
   'http://127.0.0.1:3001',
+  'https://quick-hire-job-web.vercel.app',
   ...(config.client_url ? [config.client_url] : []),
   ...(config.cors_origins
     ? config.cors_origins.split(',').map((origin) => origin.trim())
