@@ -1,5 +1,5 @@
 import { Job } from './job.model.js';
-import type { TJob } from './job.interface.js';
+import type { TJob, TJobUpdate } from './job.interface.js';
 import QueryBuilder from '../../../builder/QueryBuilder.js';
 import AppError from '../../errors/AppError.js';
 import { StatusCodes } from 'http-status-codes';
@@ -42,6 +42,17 @@ const createJobToDB = async (payload: TJob) => {
   return item;
 };
 
+const updateJobInDB = async (id: string, payload: TJobUpdate) => {
+  const item = await Job.findByIdAndUpdate(id, payload, {
+    new: true,
+    runValidators: true,
+  });
+  if (!item) {
+    throw new AppError(StatusCodes.NOT_FOUND, 'Job not found');
+  }
+  return item;
+};
+
 const removeJobFromDB = async (id: string) => {
   const item = await Job.findByIdAndDelete(id);
   if (!item) {
@@ -77,6 +88,7 @@ export const JobService = {
   getJoblistFromDB,
   getJobByIdFromDB,
   createJobToDB,
+  updateJobInDB,
   removeJobFromDB,
   getCategorySummaryFromDB,
   getFeaturedJobsFromDB,

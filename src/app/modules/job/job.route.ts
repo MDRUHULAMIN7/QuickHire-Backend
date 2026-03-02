@@ -18,6 +18,12 @@ router.post(
   validateRequest(JobValidation.create),
   JobController.createJob,
 );
+router.patch(
+  '/:id',
+  auth(USER_ROLE.Admin),
+  validateRequest(JobValidation.update),
+  JobController.updateJob,
+);
 router.delete('/:id', auth(USER_ROLE.Admin), JobController.removeJob);
 
 export const JobRoutes = router;

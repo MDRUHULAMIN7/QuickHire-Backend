@@ -67,6 +67,16 @@ const createJob = catchAsync(async (req, res) => {
   });
 });
 
+const updateJob = catchAsync(async (req, res) => {
+  const item = await JobService.updateJobInDB(req.params.id, req.body);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Job updated',
+    data: item,
+  });
+});
+
 const removeJob = catchAsync(async (req, res) => {
   const item = await JobService.removeJobFromDB(req.params.id);
   sendResponse(res, {
@@ -84,5 +94,6 @@ export const JobController = {
   getFeatured,
   getLatest,
   createJob,
+  updateJob,
   removeJob,
 };

@@ -8,6 +8,8 @@ export type TJob = {
   description: string;
   employment_type: (typeof EMPLOYMENT_TYPES)[number];
   tags?: string[];
-  company_logo_url?: string;
+  company_logo_url: string;
   createdAt?: Date;
 };
+
+export type TJobUpdate = Partial<TJob>;
