@@ -10,4 +10,9 @@ export const ApplicationValidation = {
       coverNote: z.string().min(50, { message: 'Cover note must be at least 50 characters' }),
     }),
   }),
+  changeStatus: z.object({
+    body: z.object({
+      status: z.enum(['pending', 'reviewed', 'shortlisted', 'rejected']),
+    }),
+  }),
 };
