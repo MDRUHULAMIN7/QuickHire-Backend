@@ -2,16 +2,15 @@ import { Model } from 'mongoose';
 import type { USER_ROLE } from './user.constant.js';
 
 export type TUser = {
-    id : string;
-    password : string;
-    email : string;
-    needsPasswordChange : boolean;
-    passwordChangedAt?: Date;
-    role : 'admin' | 'student' | 'instructor' |'superAdmin';
-    status?: "active" | "blocked";
-    isDeleted : boolean;
-
-}
+  id: string;
+  password: string;
+  email: string;
+  needsPasswordChange: boolean;
+  passwordChangedAt?: Date;
+  role: 'admin' | 'user';
+  status?: 'active' | 'blocked';
+  isDeleted: boolean;
+};
 export interface UserModel extends Model<TUser> {
   //instance methods for checking if the user exist
   isUserExistsByCustomId(id: string): Promise<TUser>;
@@ -26,4 +25,4 @@ export interface UserModel extends Model<TUser> {
   ): boolean;
 }
 
-export type TUserRole = keyof typeof USER_ROLE;
+export type TUserRole = (typeof USER_ROLE)[keyof typeof USER_ROLE];

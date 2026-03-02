@@ -1,24 +1,24 @@
-import config from "../config/index.js";
-import { USER_ROLE } from "../modules/user/user.constant.js";
-import { User } from "../modules/user/user.model.js";
+import config from '../config/index.js';
+import { USER_ROLE } from '../modules/user/user.constant.js';
+import { User } from '../modules/user/user.model.js';
 
 const superUser = {
   id: '0001',
   email: 'ruhulofficial777@gmail.com',
-  password: config.super_admin_password,
+  password: config.admin_password,
   needsPasswordChange: false,
-  role: USER_ROLE.superAdmin,
+  role: USER_ROLE.Admin,
   status: 'active',
   isDeleted: false,
 };
 
-const seedSuperAdmin = async () => {
+const seedAdmin = async () => {
   //when database is connected, we will check is there any user who is super admin
-  const isSuperAdminExits = await User.findOne({ role: USER_ROLE.superAdmin });
+  const isAdminExists = await User.findOne({ role: USER_ROLE.Admin });
 
-  if (!isSuperAdminExits) {
+  if (!isAdminExists) {
     await User.create(superUser);
   }
 };
 
-export default seedSuperAdmin;
+export default seedAdmin;

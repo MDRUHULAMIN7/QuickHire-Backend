@@ -1,7 +1,5 @@
 export const USER_ROLE = {
-  student: 'student',
-  instructor: 'instructor',
-  admin: 'admin',
-  superAdmin:"superAdmin"
+  Admin: 'admin',
+  User: 'user',
 } as const;
 export const UserStatus = ['active', 'blocked'];

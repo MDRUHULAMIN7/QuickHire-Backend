@@ -1,17 +1,8 @@
 import { Router } from 'express';
 import { UserRoutes } from '../modules/user/user.route.js';
-import { StudentRoutes } from '../modules/student/student.route.js';
-import { AcademicSemsterRoutes } from '../modules/academicSemester/academicSemester.routes.js';
-import { AcademicInstructorRoutes } from '../modules/academicInstructor/academicInstructor.route.js';
-import { AcademicDepartmentRoutes } from '../modules/academicDepartment/academicDepartment.route.js';
-import { InstructorRoutes } from '../modules/Instructor/Instructor.route.js';
-import { AdminRoutes } from '../modules/admin/admin.routes.js';
-import { SubjectRoutes } from '../modules/subject/subject.routes.js';
-import { semesterRegistrationRoutes } from '../modules/semesterRegistration/semesterRegistration.routes.js';
-import { offeredSubjectRoutes } from '../modules/OfferedSubject/OfferedSubject.routes.js';
+import { JobRoutes } from '../modules/job/job.route.js';
+import { ApplicationRoutes } from '../modules/application/application.route.js';
 import { AuthRoutes } from '../modules/Auth/auth.route.js';
-import { EnrolledSubjectRoutes } from '../modules/enrolledSubject/enrolledSubject.routes.js';
-import { CurriculumRoutes } from '../modules/curriculum/curriculum.routes.js';
 
 const router = Router();
 
@@ -21,55 +12,18 @@ const moduleRoutes = [
     route: UserRoutes,
   },
   {
-    path: '/students',
-    route: StudentRoutes,
-  },
-  {
-    path: '/instructors',
-    route: InstructorRoutes,
-  },
-  {
-    path: '/admins',
-    route: AdminRoutes,
-  },
-  {
-    path: '/subjects',
-    route: SubjectRoutes,
-  },
-  {
-    path: '/academic-semester',
-    route: AcademicSemsterRoutes,
-  },
-  {
-    path: '/academic-instructor',
-    route: AcademicInstructorRoutes,
-  },
-  {
-    path: '/academic-department',
-    route: AcademicDepartmentRoutes,
-  },
-    {
-    path: '/semester-registrations',
-    route: semesterRegistrationRoutes,
-  },
-  {
-    path: '/offered-subject',
-    route: offeredSubjectRoutes,
-  },
-  {
     path: '/auth',
     route: AuthRoutes,
   },
   {
-    path: '/enrolled-subjects',
-    route: EnrolledSubjectRoutes,
+    path: '/jobs',
+    route: JobRoutes,
   },
   {
-    path: '/curriculums',
-    route: CurriculumRoutes,
+    path: '/applications',
+    route: ApplicationRoutes,
   },
 ];
 moduleRoutes.forEach((route) => router.use(route.path, route.route));
-
 
 export default router;
