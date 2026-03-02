@@ -3,12 +3,12 @@ import type { TJob } from './job.interface.js';
 import QueryBuilder from '../../../builder/QueryBuilder.js';
 import AppError from '../../errors/AppError.js';
 import { StatusCodes } from 'http-status-codes';
-import { JOB_CATEGORIES } from './job.constant.js';
+import { JOB_CATEGORIES, searchFeilds } from './job.constant.js';
 
 const getJoblistFromDB = async (query: Record<string, unknown>) => {
-  const searchable = ['title', 'company', 'location', 'category'];
+  
   const qb = new QueryBuilder(Job.find(), query)
-    .search(searchable)
+    .search(searchFeilds as unknown as string[])
     .filter()
     .sort()
     .paginate()

@@ -17,4 +17,6 @@ export const EMPLOYMENT_TYPES = [
   'Remote',
 ] as const;
 
+export const searchFeilds = ['title', 'company', 'location', 'category'] as const;
+
 export const JOB_CATEGORY_NAMES = JOB_CATEGORIES.map((c) => c.name);
