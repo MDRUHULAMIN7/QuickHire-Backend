@@ -6,8 +6,16 @@ import { StatusCodes } from 'http-status-codes';
 import { JOB_CATEGORIES, searchFeilds } from './job.constant.js';
 
 const getJoblistFromDB = async (query: Record<string, unknown>) => {
-  
-  const qb = new QueryBuilder(Job.find(), query)
+  const normalizedQuery = { ...query };
+  const rawLocation = normalizedQuery.location;
+  if (typeof rawLocation === 'string' && rawLocation.trim()) {
+    normalizedQuery.location = {
+      $regex: rawLocation.trim(),
+      $options: 'i',
+    };
+  }
+
+  const qb = new QueryBuilder(Job.find(), normalizedQuery)
     .search(searchFeilds as unknown as string[])
     .filter()
     .sort()
