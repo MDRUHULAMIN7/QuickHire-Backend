@@ -23,6 +23,19 @@ const getMe = catchAsync(async (req, res) => {
   });
 });
 
+const updateMe = catchAsync(async (req, res) => {
+  const { userId } = req.user;
+
+  const result = await userServices.updateMe(userId, req.body);
+
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Profile updated successfully',
+    data: result,
+  });
+});
+
 const changeStatus = catchAsync(async (req, res) => {
   const id = req.params.id;
 
@@ -37,5 +50,6 @@ const changeStatus = catchAsync(async (req, res) => {
 });
 export const userControllers = {
   getMe,
+  updateMe,
   changeStatus,
 };

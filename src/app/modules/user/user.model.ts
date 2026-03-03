@@ -14,6 +14,14 @@ const userSchema = new Schema<TUser, UserModel>(
       required: true,
       unique:true
     },
+    name: {
+      type: String,
+      trim: true,
+    },
+    avatarUrl: {
+      type: String,
+      trim: true,
+    },
     password: {
       type: String,
       required: true,
