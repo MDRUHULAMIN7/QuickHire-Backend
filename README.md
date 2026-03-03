@@ -46,10 +46,9 @@ BCRYPT_SALT_ROUNDS=10
 ADMIN_PASSWORD=admin123
 ADMIN_KEY=admin_key
 
-RESET_PASS_UI_LINK=http://localhost:3000/reset-password
 CLIENT_URL=http://localhost:3000
 CORS_ORIGINS=http://localhost:3000
-
+```
 
 
 ## API Endpoints
@@ -75,8 +74,6 @@ Base URL: `/api/v1`
 - `POST /auth/login`
 - `POST /auth/refresh-token`
 - `POST /auth/change-password`
-- `POST /auth/forget-password`
-- `POST /auth/reset-password`
 
 ### Users
 - `GET /users/me`
